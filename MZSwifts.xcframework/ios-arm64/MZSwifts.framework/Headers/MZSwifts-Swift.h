@@ -189,7 +189,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
 @import ObjectiveC;
-@import StoreKit;
 @import UIKit;
 #endif
 
@@ -209,31 +208,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 
-SWIFT_CLASS("_TtC8MZSwifts21MZInAppPurchaseManger")
-@interface MZInAppPurchaseManger : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class SKRequest;
-@class SKProductsRequest;
-@class SKProductsResponse;
-
-@interface MZInAppPurchaseManger (SWIFT_EXTENSION(MZSwifts)) <SKProductsRequestDelegate>
-- (void)request:(SKRequest * _Nonnull)request didFailWithError:(NSError * _Nonnull)error;
-- (void)productsRequest:(SKProductsRequest * _Nonnull)request didReceiveResponse:(SKProductsResponse * _Nonnull)response;
-@end
-
-@class SKPaymentQueue;
-@class SKPaymentTransaction;
-
-@interface MZInAppPurchaseManger (SWIFT_EXTENSION(MZSwifts)) <SKPaymentTransactionObserver>
-- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue updatedTransactions:(NSArray<SKPaymentTransaction *> * _Nonnull)transactions;
-- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue * _Nonnull)queue;
-- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue restoreCompletedTransactionsFailedWithError:(NSError * _Nonnull)error;
-@end
-
-
 SWIFT_CLASS("_TtC8MZSwifts20MZMediaLibraryPicker")
 @interface MZMediaLibraryPicker : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -245,12 +219,6 @@ SWIFT_CLASS("_TtC8MZSwifts20MZMediaLibraryPicker")
 - (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> * _Nonnull)info;
 - (void)imagePickerControllerDidCancel:(UIImagePickerController * _Nonnull)picker;
 @end
-
-
-
-
-
-
 
 
 #if __has_attribute(external_source_symbol)
