@@ -1,12 +1,13 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
-// swift-module-flags: -target x86_64-apple-ios14.4-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MZSwifts
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-module-flags: -target x86_64-apple-ios15.5-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name MZSwifts
 import CoreGraphics
 import Foundation
 @_exported import MZSwifts
-import MobileCoreServices
 import Swift
 import UIKit
+import UniformTypeIdentifiers
+import _Concurrency
 public class MZTimer {
   public var isCancelled: Swift.Bool {
     get
@@ -21,19 +22,19 @@ public class MZTimer {
   public func cancel()
   @objc deinit
 }
-extension MZTimer {
+extension MZSwifts.MZTimer {
   public enum State {
     case suspended
     case resumed
     public static func == (a: MZSwifts.MZTimer.State, b: MZSwifts.MZTimer.State) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
 }
 public typealias MZFloat = Swift.Double
-extension Double {
+extension Swift.Double {
   public var float: Swift.Float {
     get
   }
@@ -44,7 +45,7 @@ extension Double {
     get
   }
 }
-extension Float : MZSwifts.MZFloatToStringProtocol {
+extension Swift.Float : MZSwifts.MZFloatToStringProtocol {
   public var int: Swift.Int {
     get
   }
@@ -59,10 +60,10 @@ extension Float : MZSwifts.MZFloatToStringProtocol {
   }
   public init?(localed string: Swift.String, as locale: Foundation.Locale)
 }
-extension Double : MZSwifts.MZFloatToStringProtocol {
+extension Swift.Double : MZSwifts.MZFloatToStringProtocol {
   public init?(localed string: Swift.String, as locale: Foundation.Locale)
 }
-extension Int {
+extension Swift.Int {
   public var mzFloat: MZSwifts.MZFloat {
     get
   }
@@ -85,7 +86,7 @@ extension Int {
     get
   }
 }
-extension UInt {
+extension Swift.UInt {
   public var int: Swift.Int {
     get
   }
@@ -93,17 +94,17 @@ extension UInt {
     get
   }
 }
-extension Bool {
+extension Swift.Bool {
   public func string(true: Swift.String = "true", false: Swift.String = "false") -> Swift.String
 }
 public protocol MZFloatToStringProtocol {
   init?(localed string: Swift.String, as locale: Foundation.Locale)
   func string(digits: Swift.Int?, locale: Foundation.Locale?) -> Swift.String
 }
-extension MZFloatToStringProtocol where Self : Swift.CVarArg {
+extension MZSwifts.MZFloatToStringProtocol where Self : Swift.CVarArg {
   public func string(digits: Swift.Int? = nil, locale: Foundation.Locale? = nil) -> Swift.String
 }
-extension String {
+extension Swift.String {
   public func int(removeNonNumbersCharacters: Swift.Bool = true, locale: Foundation.Locale = Locale.current) -> Swift.Int?
   public func float(removeNonNumbersCharacters: Swift.Bool = true, locale: Foundation.Locale = Locale.current) -> Swift.Float?
   public func double(removeNonNumbersCharacters: Swift.Bool = true, locale: Foundation.Locale = Locale.current) -> Swift.Double?
@@ -126,36 +127,36 @@ public struct MZEnvironment {
 @_hasMissingDesignatedInitializers public class MZUnit {
   @objc deinit
 }
-extension MZUnit {
+extension MZSwifts.MZUnit {
   @_hasMissingDesignatedInitializers public class Length {
     public static func meter(ofFeet feet: MZSwifts.MZFloat) -> MZSwifts.MZFloat
     public static func feet(ofMeter meter: MZSwifts.MZFloat) -> MZSwifts.MZFloat
     @objc deinit
   }
 }
-extension MZUnit {
+extension MZSwifts.MZUnit {
   @_hasMissingDesignatedInitializers public class Temperature {
     public static func fahrenheit(ofCelsius celsius: MZSwifts.MZFloat) -> MZSwifts.MZFloat
     public static func celsius(ofFahrenheit fahrenheit: MZSwifts.MZFloat) -> MZSwifts.MZFloat
     @objc deinit
   }
 }
-extension MZUnit {
+extension MZSwifts.MZUnit {
   public enum MeasurementSystem : Swift.CaseIterable {
     case metric
     case imperial
     public static func == (a: MZSwifts.MZUnit.MeasurementSystem, b: MZSwifts.MZUnit.MeasurementSystem) -> Swift.Bool
-    public var hashValue: Swift.Int {
-      get
-    }
     public func hash(into hasher: inout Swift.Hasher)
     public typealias AllCases = [MZSwifts.MZUnit.MeasurementSystem]
     public static var allCases: [MZSwifts.MZUnit.MeasurementSystem] {
       get
     }
+    public var hashValue: Swift.Int {
+      get
+    }
   }
 }
-extension CGFloat : MZSwifts.MZFloatToStringProtocol {
+extension CoreGraphics.CGFloat : MZSwifts.MZFloatToStringProtocol {
   public var mzFloat: MZSwifts.MZFloat {
     get
   }
@@ -170,7 +171,7 @@ extension CGFloat : MZSwifts.MZFloatToStringProtocol {
   }
   public init?(localed string: Swift.String, as locale: Foundation.Locale)
 }
-extension CGPoint {
+extension CoreGraphics.CGPoint {
   public static var one: CoreGraphics.CGPoint {
     get
   }
@@ -193,7 +194,7 @@ public func += (lhs: inout CoreGraphics.CGPoint, rhs: CoreGraphics.CGPoint)
 public func -= (lhs: inout CoreGraphics.CGPoint, rhs: CoreGraphics.CGPoint)
 public func *= (lhs: inout CoreGraphics.CGPoint, rhs: CoreGraphics.CGFloat)
 public func *= (lhs: inout CoreGraphics.CGPoint, rhs: CoreGraphics.CGPoint)
-extension CGSize {
+extension CoreGraphics.CGSize {
   public static var zero: CoreGraphics.CGSize {
     get
   }
@@ -216,7 +217,7 @@ public func - (lhs: CoreGraphics.CGSize, rhs: CoreGraphics.CGSize) -> CoreGraphi
 public func * (lhs: CoreGraphics.CGSize, rhs: CoreGraphics.CGFloat) -> CoreGraphics.CGSize
 public func * (lhs: CoreGraphics.CGSize, rhs: CoreGraphics.CGSize) -> CoreGraphics.CGSize
 public func / (lhs: CoreGraphics.CGSize, rhs: CoreGraphics.CGFloat) -> CoreGraphics.CGSize
-extension CGRect {
+extension CoreGraphics.CGRect {
   public static var one: CoreGraphics.CGRect {
     get
   }
@@ -247,7 +248,7 @@ extension CGRect {
   }
 }
 public func * (lhs: CoreGraphics.CGRect, rhs: CoreGraphics.CGFloat) -> CoreGraphics.CGRect
-extension CGVector {
+extension CoreGraphics.CGVector {
   public func mapToRadians(radians: CoreGraphics.CGFloat) -> CoreGraphics.CGVector
   public var point: CoreGraphics.CGPoint {
     get
@@ -264,16 +265,16 @@ public func -= (lhs: inout CoreGraphics.CGVector, rhs: CoreGraphics.CGVector)
 public func *= (lhs: inout CoreGraphics.CGVector, rhs: CoreGraphics.CGFloat)
 public func /= (lhs: inout CoreGraphics.CGVector, rhs: CoreGraphics.CGFloat)
 public func * (lhs: CoreGraphics.CGPoint, rhs: CoreGraphics.CGSize) -> CoreGraphics.CGPoint
-extension String {
+extension Swift.String {
   public func toInt(ignores: [Swift.String] = [], trimInvalid: Swift.Bool = false) -> Swift.Int?
   public func toDouble(ignores: [Swift.String] = [], trimInvalid: Swift.Bool = false) -> Swift.Double?
   public func toSeconds() -> Swift.Double?
 }
-extension DispatchTimeInterval {
+extension Dispatch.DispatchTimeInterval {
   public static func with(seconds: Swift.Double) -> Dispatch.DispatchTimeInterval
   public static func now(after seconds: Swift.Double) -> Dispatch.DispatchTime
 }
-extension DispatchTime {
+extension Dispatch.DispatchTime {
   public static func now(after seconds: Swift.Double) -> Dispatch.DispatchTime
 }
 public struct MZMath {
@@ -281,11 +282,11 @@ public struct MZMath {
   public static func lerp(numerator: CoreGraphics.CGFloat, denominator: CoreGraphics.CGFloat, canOverOne: Swift.Bool = false) -> CoreGraphics.CGFloat
   public static func valueInBound<T>(origin: T, lower: T, upper: T) -> T where T : Swift.Comparable
 }
-extension MZMath {
+extension MZSwifts.MZMath {
   public static func greatestCommonDivisorOf(_ a: Swift.Int, _ b: Swift.Int) -> Swift.Int
   public static func gcd(_ a: Swift.Int, _ b: Swift.Int) -> Swift.Int
 }
-extension MZMath {
+extension MZSwifts.MZMath {
   public static func distancePow2(from: CoreGraphics.CGPoint, to: CoreGraphics.CGPoint) -> CoreGraphics.CGFloat
   public static func distance(from: CoreGraphics.CGPoint, to: CoreGraphics.CGPoint) -> CoreGraphics.CGFloat
 }
@@ -321,7 +322,7 @@ public struct MZWeight {
   public init(_ value: Swift.Double)
   public func setFormatter(_ formatter: MZSwifts.MZWeight.Formatter) -> MZSwifts.MZWeight
 }
-extension MZWeight {
+extension MZSwifts.MZWeight {
   public enum Unit {
     case gram
     case ounce
@@ -332,21 +333,21 @@ extension MZWeight {
       get
     }
     public static func == (a: MZSwifts.MZWeight.Unit, b: MZSwifts.MZWeight.Unit) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
 }
-extension MZWeight {
+extension MZSwifts.MZWeight {
   public static func gram(fromOunce ounce: Swift.Double) -> Swift.Double
   public static func ounce(fromGram gram: Swift.Double) -> Swift.Double
 }
-extension MZWeight {
+extension MZSwifts.MZWeight {
   public static func + (lhs: MZSwifts.MZWeight, rhs: MZSwifts.MZWeight) -> MZSwifts.MZWeight
   public static func - (lhs: MZSwifts.MZWeight, rhs: MZSwifts.MZWeight) -> MZSwifts.MZWeight
 }
-extension MZWeight {
+extension MZSwifts.MZWeight {
   public class Formatter {
     public static let shared: MZSwifts.MZWeight.Formatter
     public var digitsOfGram: Swift.Int
@@ -359,13 +360,13 @@ extension MZWeight {
     @objc deinit
   }
 }
-extension MZWeight : Swift.CustomStringConvertible {
+extension MZSwifts.MZWeight : Swift.CustomStringConvertible {
   public var description: Swift.String {
     get
   }
   public func string(digits: Swift.Int? = nil, locale: Foundation.Locale? = nil) -> Swift.String
 }
-extension Double {
+extension Swift.Double {
   public var weight: MZSwifts.MZWeight {
     get
   }
@@ -380,7 +381,7 @@ extension Double {
   public class func rotate(uiImage image: UIKit.UIImage?, orientation: UIKit.UIImage.Orientation) -> UIKit.UIImage?
   @objc deinit
 }
-extension UIImage {
+extension UIKit.UIImage {
   public func data(as format: MZSwifts.MZImage.Format = .png) -> Foundation.Data?
   public func normalized() -> UIKit.UIImage
   public func resized(to targetSize: CoreGraphics.CGSize) -> UIKit.UIImage
@@ -389,7 +390,7 @@ extension UIImage {
 @_hasMissingDesignatedInitializers public class MZDataExtension {
   @objc deinit
 }
-extension Data {
+extension Foundation.Data {
   public func copyBytes<ConvertedType>(to array: inout [ConvertedType])
   public func copyBytes<ConvertedType>(to value: inout ConvertedType)
 }
@@ -397,12 +398,12 @@ extension Data {
   @available(iOS 13.0, *)
   public func show(in parent: UIKit.UIViewController, sourceType: UIKit.UIImagePickerController.SourceType, modalPresentationStyle: UIKit.UIModalPresentationStyle = .automatic, completed: (() -> ())? = nil, done: ((UIKit.UIImage?) -> ())?)
   public func show(in parent: UIKit.UIViewController, sourceType: UIKit.UIImagePickerController.SourceType, completed: (() -> ())? = nil, done: ((UIKit.UIImage?) -> ())?)
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
-extension MZMediaLibraryPicker : UIKit.UIImagePickerControllerDelegate, UIKit.UINavigationControllerDelegate {
-  @objc dynamic public func imagePickerController(_ picker: UIKit.UIImagePickerController, didFinishPickingMediaWithInfo info: [UIKit.UIImagePickerController.InfoKey : Any])
-  @objc dynamic public func imagePickerControllerDidCancel(_ picker: UIKit.UIImagePickerController)
+extension MZSwifts.MZMediaLibraryPicker : UIKit.UIImagePickerControllerDelegate, UIKit.UINavigationControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func imagePickerController(_ picker: UIKit.UIImagePickerController, didFinishPickingMediaWithInfo info: [UIKit.UIImagePickerController.InfoKey : Any])
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func imagePickerControllerDidCancel(_ picker: UIKit.UIImagePickerController)
 }
 public protocol MZNotificationComponentEventProtocol : Swift.CaseIterable {
   var notificationName: Foundation.Notification.Name { get }
@@ -415,7 +416,7 @@ public protocol MZNotificationComponentProtocol {
   func remove(observer: Any)
   func post(_ event: Self.NotifyEvent, userInfo: [Swift.AnyHashable : Any]?)
 }
-extension MZNotificationComponentProtocol where Self.NotifyEvent : MZSwifts.MZNotificationComponentEventProtocol {
+extension MZSwifts.MZNotificationComponentProtocol where Self.NotifyEvent : MZSwifts.MZNotificationComponentEventProtocol {
   public var baseCenter: Foundation.NotificationCenter {
     get
   }
@@ -432,13 +433,13 @@ extension MZNotificationComponentProtocol where Self.NotifyEvent : MZSwifts.MZNo
     public var description: Swift.String {
       get
     }
-    public typealias RawValue = Swift.Int
     public init?(rawValue: Swift.Int)
-    public var rawValue: Swift.Int {
+    public typealias AllCases = [MZSwifts.MZAngle.CircularMotion]
+    public typealias RawValue = Swift.Int
+    public static var allCases: [MZSwifts.MZAngle.CircularMotion] {
       get
     }
-    public typealias AllCases = [MZSwifts.MZAngle.CircularMotion]
-    public static var allCases: [MZSwifts.MZAngle.CircularMotion] {
+    public var rawValue: Swift.Int {
       get
     }
   }
@@ -454,11 +455,11 @@ extension MZNotificationComponentProtocol where Self.NotifyEvent : MZSwifts.MZNo
   public class func shortestDegreeDistance(from: MZSwifts.MZFloat, to: MZSwifts.MZFloat) -> MZSwifts.MZFloat
   @objc deinit
 }
-extension Date {
+extension Foundation.Date {
   public func string(withFormat format: Swift.String? = "yyyyMMdd-HHmmss", local: Foundation.Locale? = nil, timeZone: Foundation.TimeZone? = nil) -> Swift.String
   public func string(dateStyle: Foundation.DateFormatter.Style, local: Foundation.Locale? = nil, timeZone: Foundation.TimeZone? = nil) -> Swift.String
 }
-extension Data {
+extension Foundation.Data {
   public var kilobyte: Swift.Float {
     get
   }
@@ -494,7 +495,7 @@ public class MZShapeEllipse {
   public class func logDocumentPath()
   @objc deinit
 }
-extension MZDebug {
+extension MZSwifts.MZDebug {
   public class func fatalUnkonowSegue(to any: Any)
 }
 @_hasMissingDesignatedInitializers public class MZPath {
