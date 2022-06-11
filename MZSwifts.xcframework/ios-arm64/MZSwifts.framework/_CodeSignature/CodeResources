@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/MZSwifts-Swift.h</key>
 		<data>
-		RaPtWf3GvUak6TZrgKf8fA6sGNA=
+		BcPwNm2/3nzMjpSmTdueqb4PhN8=
 		</data>
 		<key>Headers/MZSwifts.h</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		plg1fFr/1yxo7X4h06XGqYvKruE=
+		73QKH/6WCuujIliJQnOd5CKL7MM=
 		</data>
 		<key>Modules/MZSwifts.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/MZSwifts.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		g3kp1H+xwGdQqjlf3E8TDu9P/f8=
+		py++u6F3/Ud+NUnBQQ3hJ8oONww=
 		</data>
 		<key>Modules/MZSwifts.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		EaW16hLgsUun/e/jtKzgVdJ7kks=
+		FWnxnO21mQ0SjlTS0FxKRzO0UA4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,7 +39,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			DjtAOUMaC5QIqgBqps+9Bs/T1HfjpD1GkuA1dNcUNOE=
+			+8EeB4lyWKkw+x1c6yWaw0kD6xSxm7Uw9DvfMeqkB5s=
 			</data>
 		</dict>
 		<key>Headers/MZSwifts.h</key>
@@ -60,14 +60,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h4E+jHcWSfKQNhDs8BPD/fYnkKPk+s/pY0PIf/G/V48=
+			Q7ty16ddvurCfF6Nlvqmkl1zax4yCaOmn0eEbjSQ/4o=
 			</data>
 		</dict>
 		<key>Modules/MZSwifts.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4ZK5SvJfkheeaAoztxLSDEufivAx+iospSVq1iY3c6I=
+			qU0V+5mB8cnJp3ezFodS0m982WIVOBSO9iXOrEeA82A=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
