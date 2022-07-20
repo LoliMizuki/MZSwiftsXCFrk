@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     
-    name: "MZSwiftsSPM",
+    name: "MZSwiftsXCFrk",
     
     platforms: [.iOS(.v14)],
     

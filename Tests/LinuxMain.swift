@@ -1,7 +1,7 @@
 import XCTest
 
-import MZSwiftsSPMTests
+import MZSwiftsXCFrkTests
 
 var tests = [XCTestCaseEntry]()
-tests += MZSwiftsSPMTests.allTests()
+tests += MZSwiftsXCFrkTests.allTests()
 XCTMain(tests)
