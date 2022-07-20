@@ -51,7 +51,7 @@ extension Foundation.Data {
   public var utf8String: Swift.String? {
     get
   }
-  public func md5(returnEmptyIfZeroCount: Swift.Bool = false) -> Swift.String
+  public func md5(returnEmptyIfZeroCount: Swift.Bool = true) -> Swift.String
   public func byteDescription(allowedUnits: Foundation.ByteCountFormatter.Units = .useMB) -> Swift.String
   public func copyBytes<ConvertedType>(to array: inout [ConvertedType])
   public func copyBytes<ConvertedType>(to value: inout ConvertedType)
@@ -60,9 +60,11 @@ extension Swift.Array where Element == Combine.AnyCancellable {
   public mutating func cancelAll(alsoRemove remove: Swift.Bool = true)
 }
 extension Foundation.Date {
-  public static let iso8610Format: Swift.String
   public func string(withFormat format: Swift.String? = "yyyyMMdd-HHmmss", local: Foundation.Locale? = nil, timeZone: Foundation.TimeZone? = nil) -> Swift.String
   public func string(dateStyle: Foundation.DateFormatter.Style, local: Foundation.Locale? = nil, timeZone: Foundation.TimeZone? = nil) -> Swift.String
+}
+extension Foundation.Date {
+  public static let iso8610Format: Swift.String
 }
 public protocol MZNotificationComponentEventProtocol : Swift.CaseIterable {
   var notificationName: Foundation.Notification.Name { get }
