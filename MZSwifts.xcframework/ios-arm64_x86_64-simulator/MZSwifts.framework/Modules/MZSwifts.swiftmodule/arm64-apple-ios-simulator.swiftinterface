@@ -101,8 +101,8 @@ extension UIKit.UIImage {
   }
   public func data(as format: UIKit.UIImage.Format = .png, needAutoreleasepool: Swift.Bool = false) -> Foundation.Data?
   public func normalized() -> UIKit.UIImage
-  public func resized(to targetSize: CoreGraphics.CGSize) -> UIKit.UIImage
-  public func resized(maxEdge: CoreGraphics.CGFloat, forceResizeIfLess: Swift.Bool = false) -> UIKit.UIImage
+  public func resized(to targetSize: CoreGraphics.CGSize, scale: CoreGraphics.CGFloat = 1, opaque: Swift.Bool = true) -> UIKit.UIImage
+  public func resized(maxEdge: CoreGraphics.CGFloat, forceResizeIfLess: Swift.Bool = false, scale: CoreGraphics.CGFloat = 1, opaque: Swift.Bool = true) -> UIKit.UIImage
   public func cropped(to cropRect: CoreGraphics.CGRect) -> UIKit.UIImage?
   public func rotating(to orientation: UIKit.UIImage.Orientation) -> UIKit.UIImage?
 }
