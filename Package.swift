@@ -7,7 +7,7 @@ let package = Package(
     
     name: "MZSwiftsXCFrk",
     
-    platforms: [.iOS(.v14)],
+    platforms: [.iOS(.v15)],
     
     products: [
         .library(
